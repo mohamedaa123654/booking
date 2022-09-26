@@ -1,5 +1,3 @@
-import 'package:booking/core/color_manager.dart';
-import 'package:booking/core/componant.dart';
 import 'package:booking/features/main/presentation/cubit/main_cubit.dart';
 import 'package:booking/features/main/presentation/widgets/banner.dart';
 import 'package:booking/features/main/presentation/widgets/best_deals.dart';

@@ -1,4 +1,5 @@
 import 'package:booking/features/onboarding/presentation/pages/on_boarding_screen.dart';
+import 'package:booking/home.dart';
 import 'package:flutter/material.dart';
 
 void main() {
