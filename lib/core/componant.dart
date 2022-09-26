@@ -91,7 +91,7 @@ void navigateAndFinish(
       },
     );
 
-class MyCard extends StatelessWidget {
+class HotelCard extends StatelessWidget {
   String imageURL;
   String hotelName;
   String location;
@@ -100,7 +100,7 @@ class MyCard extends StatelessWidget {
   double rate;
   Color? backgrowndColor;
 
-  MyCard(
+  HotelCard(
       {required this.imageURL,
       required this.hotelName,
       required this.location,
@@ -207,6 +207,216 @@ class MyCard extends StatelessWidget {
   }
 }
 
+class FinishedCardLeft extends StatelessWidget {
+  String imageURL;
+  String hotelName;
+  String location;
+  String distance;
+  String date;
+  String price;
+  double rate;
+
+  FinishedCardLeft({
+    required this.imageURL,
+    required this.hotelName,
+    required this.location,
+    required this.distance,
+    required this.price,
+    required this.date,
+    required this.rate,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 24),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          ClipRRect(
+            borderRadius: const BorderRadius.all(Radius.circular(16)),
+            child: Image.network(
+              imageURL,
+              fit: BoxFit.cover,
+              width: 150,
+              height: 150,
+            ),
+          ),
+          const SizedBox(
+            width: 16,
+          ),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                hotelName,
+                style:
+                    const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+              ),
+              Text(
+                location,
+                style: const TextStyle(color: Colors.grey),
+              ),
+              Text(
+                date.split(',')[0],
+                style: TextStyle(fontSize: 12),
+              ),
+              Text(
+                date.split(',')[1],
+                style: TextStyle(fontSize: 12),
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  const Icon(
+                    Icons.location_pin,
+                    size: 18,
+                    color: ColorManager.primary,
+                  ),
+                  Text(
+                    distance,
+                    style: const TextStyle(color: Colors.grey, fontSize: 16),
+                  ),
+                ],
+              ),
+              RatingBarIndicator(
+                direction: Axis.horizontal,
+                rating: rate,
+                itemSize: 22,
+                itemCount: 5,
+                itemPadding: const EdgeInsets.only(right: 2.0),
+                itemBuilder: (context, _) => const Icon(
+                  Icons.star,
+                  color: ColorManager.primary,
+                ),
+              ),
+              Row(
+                children: [
+                  Text(
+                    '\$$price',
+                    textAlign: TextAlign.end,
+                    style: const TextStyle(
+                        fontSize: 20, fontWeight: FontWeight.bold),
+                  ),
+                  const Text(
+                    ' /per night',
+                    style: TextStyle(color: Colors.grey),
+                  ),
+                ],
+              )
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class FinishedCardRight extends StatelessWidget {
+  String imageURL;
+  String hotelName;
+  String location;
+  String distance;
+  String date;
+  String price;
+  double rate;
+
+  FinishedCardRight({
+    required this.imageURL,
+    required this.hotelName,
+    required this.location,
+    required this.distance,
+    required this.price,
+    required this.date,
+    required this.rate,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 24),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              Text(
+                hotelName,
+                style:
+                    const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+              ),
+              Text(
+                location,
+                style: const TextStyle(color: Colors.grey),
+              ),
+              Text(
+                date.split(',')[0],
+                style: TextStyle(fontSize: 12),
+              ),
+              Text(
+                date.split(',')[1],
+                style: TextStyle(fontSize: 12),
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  const Icon(
+                    Icons.location_pin,
+                    size: 18,
+                    color: ColorManager.primary,
+                  ),
+                  Text(
+                    distance,
+                    style: const TextStyle(color: Colors.grey, fontSize: 16),
+                  ),
+                ],
+              ),
+              RatingBarIndicator(
+                direction: Axis.horizontal,
+                rating: rate,
+                itemSize: 22,
+                itemCount: 5,
+                itemPadding: const EdgeInsets.only(right: 2.0),
+                itemBuilder: (context, _) => const Icon(
+                  Icons.star,
+                  color: ColorManager.primary,
+                ),
+              ),
+              Row(
+                children: [
+                  Text(
+                    '\$$price',
+                    textAlign: TextAlign.end,
+                    style: const TextStyle(
+                        fontSize: 20, fontWeight: FontWeight.bold),
+                  ),
+                  const Text(
+                    ' /per night',
+                    style: TextStyle(color: Colors.grey),
+                  ),
+                ],
+              )
+            ],
+          ),
+          const SizedBox(
+            width: 16,
+          ),
+          ClipRRect(
+            borderRadius: const BorderRadius.all(Radius.circular(16)),
+            child: Image.network(
+              imageURL,
+              fit: BoxFit.cover,
+              width: 150,
+              height: 150,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
 class UpcomingCard extends StatelessWidget {
   String imageURL;
   String hotelName;
@@ -238,7 +448,7 @@ class UpcomingCard extends StatelessWidget {
           child: Text(
             offerdate,
             textAlign: TextAlign.center,
-            style: TextStyle(letterSpacing: 2),
+            style: const TextStyle(letterSpacing: 2),
           ),
         ),
         Padding(
@@ -255,7 +465,7 @@ class UpcomingCard extends StatelessWidget {
 
                   spreadRadius: 3,
                   blurRadius: 7,
-                  offset: Offset(0, 3), // changes position of shadow
+                  offset: const Offset(0, 3), // changes position of shadow
                 ),
               ],
               borderRadius: BorderRadius.circular(16),

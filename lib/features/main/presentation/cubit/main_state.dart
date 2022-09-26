@@ -16,3 +16,5 @@ class MainLoadingBottomNavigationBarState extends MainState {}
 class MainChangeAnimatedSmoothIndicatorState extends MainState {}
 
 class MainLoadingAnimatedSmoothIndicatorState extends MainState {}
+
+class TripChangeTabBarState extends MainState {}

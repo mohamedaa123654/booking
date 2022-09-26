@@ -1,17 +1,33 @@
 import 'package:booking/core/color_manager.dart';
 import 'package:booking/core/componant.dart';
+import 'package:booking/features/main/presentation/cubit/main_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class TripsPage extends StatelessWidget {
   TripsPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
-      initialIndex: 0,
-      length: 3,
-      child: Scaffold(
-        body: Column(
+    return BlocConsumer<MainCubit, MainState>(
+        listener: (BuildContext context, MainState state) {},
+        builder: (BuildContext context, MainState state) {
+          MainCubit cubit = MainCubit.get(context);
+          return DefaultTabController(
+            length: 3,
+            initialIndex: 0,
+            child: Scaffold(
+              appBar: tripsScreenAppBar(cubit),
+              body: TabBarView(children: cubit.screens),
+            ),
+          );
+        });
+  }
+
+  PreferredSize tripsScreenAppBar(MainCubit cubit) {
+    return PreferredSize(
+        preferredSize: const Size.fromHeight(135),
+        child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const Padding(
@@ -43,55 +59,19 @@ class TripsPage extends StatelessWidget {
                   borderRadius: BorderRadius.circular(30),
                 ),
                 child: TabBar(
-                  labelColor: ColorManager.primary,
-                  indicatorColor: Colors.transparent,
-                  enableFeedback: true,
-                  unselectedLabelColor: ColorManager.grey,
-                  labelStyle:
-                      TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                  tabs: const [
-                    Tab(
-                      text: 'Upcoming',
-                    ),
-                    Tab(
-                      text: 'Finished',
-                    ),
-                    Tab(
-                      text: 'Favorite',
-                    ),
-                  ],
-                ),
+                    labelColor: ColorManager.primary,
+                    indicatorColor: Colors.transparent,
+                    enableFeedback: true,
+                    unselectedLabelColor: ColorManager.grey,
+                    labelStyle:
+                        TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                    onTap: (index) {
+                      cubit.emit(TripChangeTabBarState());
+                    },
+                    tabs: cubit.tabTitles),
               ),
             ),
-            Expanded(
-              child: ListView.builder(
-                  // physics: NeverScrollableScrollPhysics(),
-                  scrollDirection: Axis.vertical,
-                  itemCount: 6,
-                  itemBuilder: (context, index) {
-                    return Column(
-                      children: [
-                        UpcomingCard(
-                          imageURL:
-                              'https://pix8.agoda.net/hotelImages/124/1246280/1246280_16061017110043391702.jpg?ca=6&ce=1&s=1024x768s',
-                          distance: '70 km to city',
-                          hotelName: 'Queen Hotel',
-                          location: 'Wembley, London',
-                          price: '60',
-                          rate: 4.5,
-                          offerdate: '01 sep - 05 Sep, 1 Room 2 People',
-                          reviews: '90',
-                        ),
-                        SizedBox(
-                          height: 16,
-                        ),
-                      ],
-                    );
-                  }),
-            ),
           ],
-        ),
-      ),
-    );
+        ));
   }
 }

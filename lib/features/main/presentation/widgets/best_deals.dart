@@ -51,7 +51,7 @@ class BestDeals extends StatelessWidget {
                 itemBuilder: (context, index) {
                   return Column(
                     children: [
-                      MyCard(
+                      HotelCard(
                         imageURL:
                             'https://pix8.agoda.net/hotelImages/124/1246280/1246280_16061017110043391702.jpg?ca=6&ce=1&s=1024x768s',
                         distance: '70 km to city',

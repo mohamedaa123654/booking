@@ -6,6 +6,9 @@ import 'package:booking/features/main/data/models/cities.dart';
 import 'package:booking/features/main/presentation/pages/explore.dart';
 import 'package:booking/features/main/presentation/pages/profile.dart';
 import 'package:booking/features/main/presentation/pages/trips.dart';
+import 'package:booking/features/main/presentation/widgets/tabs_tabs/favorite.dart';
+import 'package:booking/features/main/presentation/widgets/tabs_tabs/finished.dart';
+import 'package:booking/features/main/presentation/widgets/tabs_tabs/upcoming.dart';
 import 'package:booking/features/onboarding/data/models/onboarding.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
@@ -100,4 +103,19 @@ class MainCubit extends Cubit<MainState> {
     indexIndecator = index;
     emit(MainChangeAnimatedSmoothIndicatorState());
   }
+
+  List<Widget> screens = const [Upcoming(), Finished(), Favorite()];
+
+  //Tabs Title
+  List<Widget> tabTitles = const [
+    Tab(
+      text: 'Upcoming',
+    ),
+    Tab(
+      text: 'Finished',
+    ),
+    Tab(
+      text: 'Favorite',
+    ),
+  ];
 }
