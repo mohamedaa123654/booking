@@ -628,6 +628,32 @@ class ExplorPageTitle extends StatelessWidget {
   }
 }
 
+class ViewAllText extends StatelessWidget {
+  ViewAllText(
+      {Key? key, required this.title, this.textColor = ColorManager.black})
+      : super(key: key);
+  String title;
+  Color? textColor;
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        const SizedBox(
+          width: 32,
+        ),
+        Text(
+          title,
+          style: TextStyle(
+              fontSize: 14.0,
+              fontWeight: FontWeight.bold,
+              wordSpacing: 2,
+              color: textColor!),
+        ),
+      ],
+    );
+  }
+}
+
 class PopularCitiesCard extends StatelessWidget {
   String imageURL;
   String cityName;

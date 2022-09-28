@@ -1,3 +1,4 @@
+import 'package:booking/features/hotel/presentation/pages/hotel_page.dart';
 import 'package:booking/features/onboarding/presentation/pages/on_boarding_screen.dart';
 import 'package:booking/home.dart';
 import 'package:flutter/material.dart';
@@ -14,7 +15,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: OnBoardingScreen(),
+      home: HotelPage(),
     );
   }
 }

@@ -96,6 +96,16 @@ class MainCubit extends Cubit<MainState> {
     ),
   ];
 
+  List<String> rooms = [
+    'https://insights.ehotelier.com/wp-content/uploads/sites/6/2020/01/hotel-room-300x300.jpg',
+    'https://www.gannett-cdn.com/-mm-/05b227ad5b8ad4e9dcb53af4f31d7fbdb7fa901b/c=0-64-2119-1259/local/-/media/USATODAY/USATODAY/2014/08/13/1407953244000-177513283.jpg',
+    'https://thedeepblueseamovie.com/wp-content/uploads/2020/04/Your-Hotel-Suite.jpg',
+    'https://cdn.loewshotels.com/loewshotels.com-2466770763/cms/cache/v2/5f5a6e0d12749.jpg/1920x1080/fit/80/86e685af18659ee9ecca35c465603812.jpg',
+    'https://www.bedroomchecker.com/wp-content/uploads/2013/12/Family-Room.png',
+    'https://www.rd.com/wp-content/uploads/2021/03/GettyImages-1207490255-e1615485559611.jpg?fit=696,463',
+    'https://image-tc.galaxy.tf/wijpeg-1ep2143ci3dsvirm90ud0wv8l/rockymountainphotoco-16-opt_standard.jpg?crop=107%2C0%2C1707%2C1280'
+  ];
+
   int indexIndecator = 0;
   onChangeAnimatedSmoothIndicator(int index) {
     emit(MainLoadingAnimatedSmoothIndicatorState());
