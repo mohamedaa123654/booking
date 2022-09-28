@@ -1,5 +1,4 @@
 import 'package:booking/core/color_manager.dart';
-import 'package:booking/core/componant.dart';
 import 'package:booking/features/main/presentation/cubit/main_cubit.dart';
 import 'package:flutter/material.dart';
 
@@ -430,6 +429,32 @@ class HotelPageBody extends StatelessWidget {
           ),
         ],
       ),
+    );
+  }
+}
+
+class ViewAllText extends StatelessWidget {
+  ViewAllText(
+      {Key? key, required this.title, this.textColor = ColorManager.black})
+      : super(key: key);
+  String title;
+  Color? textColor;
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        const SizedBox(
+          width: 32,
+        ),
+        Text(
+          title,
+          style: TextStyle(
+              fontSize: 14.0,
+              fontWeight: FontWeight.bold,
+              wordSpacing: 2,
+              color: textColor!),
+        ),
+      ],
     );
   }
 }

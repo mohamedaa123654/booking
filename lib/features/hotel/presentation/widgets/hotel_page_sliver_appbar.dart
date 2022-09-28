@@ -155,7 +155,7 @@ class HotelPageSliverAppBar extends StatelessWidget {
                             Padding(
                               padding: const EdgeInsets.symmetric(vertical: 8),
                               child: Text(
-                                reviews,
+                                '$reviews reviews',
                                 style: const TextStyle(
                                   fontSize: 16,
                                   color: ColorManager.white,
